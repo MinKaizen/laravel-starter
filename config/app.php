@@ -17,6 +17,18 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Application Display Name
+    |--------------------------------------------------------------------------
+    |
+    | Similar to the app name, but this is a non-slugified app name that you
+    | might want to show to users or in the `title` meta of your base layout
+    |
+    */
+
+    'display_name' => env('APP_DISPLAY_NAME', 'Laravel'),
+
+    /*
+    |--------------------------------------------------------------------------
     | Application Environment
     |--------------------------------------------------------------------------
     |
