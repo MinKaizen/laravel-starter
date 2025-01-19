@@ -1,1 +1,7 @@
-lando php ./vendor/bin/pint --dirty
+./vendor/bin/pint --dirty --repair
+
+# Check for changes made by Pint
+if [ $? -ne 0 ]; then
+  echo "✖ Pint made changes to your files. Please review and stage them before committing."
+  exit 1
+fi
