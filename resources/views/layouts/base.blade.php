@@ -14,8 +14,12 @@
         @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))
             @vite(['resources/css/app.css', 'resources/js/app.js'])
         @endif
+
+        @stack('head')
     </head>
     <body class="font-sans antialiased dark:bg-black dark:text-white/50">
         {{ $slot }}
+
+        @stack('footer')
     </body>
 </html>
