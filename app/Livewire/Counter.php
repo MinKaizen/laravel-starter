@@ -4,7 +4,7 @@ namespace App\Livewire;
 
 use Livewire\Component;
 
-class Counter extends Component
+final class Counter extends Component
 {
     public int $count = 0;
 
@@ -18,7 +18,7 @@ class Counter extends Component
         $this->count--;
     }
 
-    public function render()
+    public function render(): \Illuminate\Contracts\View\View
     {
         return view('livewire.counter');
     }
