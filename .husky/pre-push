@@ -1,0 +1,29 @@
+#!/bin/sh
+
+get_hash() {
+    local hash
+    hash=$(git ls-files -z app | tar --null -T - -cf - | sha256sum | awk '{print $1}')
+    echo "$hash"
+}
+
+hash_file=".pre-push-hash"
+hash="$(get_hash)"
+
+if [ -f "$hash_file" ]; then
+    if [ "$hash" = "$(cat $hash_file)" ]; then
+        echo "pre-push hash matches. Skipping checks..."
+        exit 0
+    fi
+fi
+
+docker run -v $PWD:/app --rm ghcr.io/danog/psalm:latest /composer/vendor/bin/psalm
+
+PSALM_EXIT_CODE=$?
+
+if [ "$PSALM_EXIT_CODE" -ne 0 ]; then
+    echo "Psalm found errors.  Aborting push."
+    exit 1
+else
+    echo "Psalm success!. Writing hash to $hash_file..."
+    echo "$hash" > "$hash_file"
+fi
