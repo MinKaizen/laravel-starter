@@ -4,6 +4,7 @@
   "scripts": {
     "build": "vite build",
     "dev": "vite",
+    "psalm": "docker run -it -v $PWD:/app --rm ghcr.io/danog/psalm:latest /composer/vendor/bin/psalm",
     "prepare": "husky"
   },
   "devDependencies": {
