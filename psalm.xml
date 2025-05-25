@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<psalm
+    errorLevel="7"
+    resolveFromConfigFile="true"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="https://getpsalm.org/schema/config"
+    xsi:schemaLocation="https://getpsalm.org/schema/config vendor/vimeo/psalm/config.xsd"
+    findUnusedBaselineEntry="true"
+    findUnusedIssueHandlerSuppression="false"
+    findUnusedCode="true"
+>
+    <projectFiles>
+        <directory name="app" />
+        <directory name="database/factories" />
+        <directory name="database/seeders" />
+        <ignoreFiles>
+            <directory name="vendor" />
+            <directory name="app/Console/Commands" />
+        </ignoreFiles>
+    </projectFiles>
+
+    <issueHandlers>
+        <UnusedClass>
+            <errorLevel type="suppress">
+                <directory name="app/Console" />
+                <directory name="app/Providers" />
+                <directory name="app/Http/Controllers" />
+                <directory name="app/Livewire" />
+                <directory name="app/View" />
+                <directory name="database/factories" />
+                <directory name="database/seeders" />
+            </errorLevel>
+        </UnusedClass>
+        <PossiblyUnusedMethod>
+            <errorLevel type="suppress">
+                <directory name="app" />
+            </errorLevel>
+        </PossiblyUnusedMethod>
+        <PossiblyUnusedProperty>
+            <errorLevel type="suppress">
+                <directory name="app" />
+            </errorLevel>
+        </PossiblyUnusedProperty>
+        <MissingTemplateParam>
+            <errorLevel type="suppress">
+                <directory name="app" />
+            </errorLevel>
+        </MissingTemplateParam>
+        <UndefinedThisPropertyFetch>
+            <errorLevel type="suppress">
+                <directory name="app/Models" />
+            </errorLevel>
+        </UndefinedThisPropertyFetch>
+    </issueHandlers>
+</psalm>
